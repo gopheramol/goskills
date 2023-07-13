@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Authentication and Authorization - Go Skills</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="Authentication mechanism Definition(s):
+Hardware or software-based mechanisms that force users to prove their identity before accessing data on a device.
+Authentication Is the act of validating that users are whom they claim to be.
+( Confirms users are who they say they are)
+This is the first step in any security process.
+If a user enters the correct data, the system assumes the identity is valid and grants access.
+One-time pins." />
+  <meta name="author" content="Amol Gaikwad" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="theme.png" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/a/AAcHTtc3mYt4p6ySf3dBzQJpgn3kiq3L0vVAsoWjEcwYfaM=s64-c-rg-br100" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="twitter.svg" />
+  
+  <link rel="preload" as="image" href="github.svg" />
+  
+  <link rel="preload" as="image" href="linkedin.svg" />
+  
+  <link rel="preload" as="image" href="rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.114.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Authentication and Authorization" />
+<meta property="og:description" content="Authentication mechanism Definition(s):
+Hardware or software-based mechanisms that force users to prove their identity before accessing data on a device.
+Authentication Is the act of validating that users are whom they claim to be.
+( Confirms users are who they say they are)
+This is the first step in any security process.
+If a user enters the correct data, the system assumes the identity is valid and grants access.
+One-time pins." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/auth/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-10T21:33:26+05:30" />
+<meta property="article:modified_time" content="2023-06-10T21:33:26+05:30" />
+
+  
+  <meta itemprop="name" content="Authentication and Authorization">
+<meta itemprop="description" content="Authentication mechanism Definition(s):
+Hardware or software-based mechanisms that force users to prove their identity before accessing data on a device.
+Authentication Is the act of validating that users are whom they claim to be.
+( Confirms users are who they say they are)
+This is the first step in any security process.
+If a user enters the correct data, the system assumes the identity is valid and grants access.
+One-time pins."><meta itemprop="datePublished" content="2023-06-10T21:33:26+05:30" />
+<meta itemprop="dateModified" content="2023-06-10T21:33:26+05:30" />
+<meta itemprop="wordCount" content="672">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Authentication and Authorization"/>
+<meta name="twitter:description" content="Authentication mechanism Definition(s):
+Hardware or software-based mechanisms that force users to prove their identity before accessing data on a device.
+Authentication Is the act of validating that users are whom they claim to be.
+( Confirms users are who they say they are)
+This is the first step in any security process.
+If a user enters the correct data, the system assumes the identity is valid and grants access.
+One-time pins."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href=""
+      >Go Skills</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/amolasg"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gopheramol"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/amolasg/"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Authentication and Authorization</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jun 10, 2023</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h1 id="authentication-mechanism">A<strong><strong>uthentication mechanism</strong></strong></h1>
+<p><strong>Definition(s):</strong></p>
+<p>Hardware or software-based mechanisms that <strong>force users to prove their identity</strong> b<strong>efore accessing data</strong> on a device.</p>
+<h1 id="authentication"><strong>Authentication</strong></h1>
+<p>Is the act of validating that users are whom they claim to be.</p>
+<p>( Confirms users are who they say they are)</p>
+<p>This is the first step in any security process.</p>
+<p>If a user enters the correct data, the system assumes the identity is valid and grants access.</p>
+<ul>
+<li><strong>One-time pins.</strong> Grant access for only one session or transaction.</li>
+<li><strong>Passwords.</strong> Usernames and passwords ****are the most common <a href="https://www.okta.com/products/adaptive-multi-factor-authentication/">authentication factors</a>.</li>
+<li><strong>Authentication apps.</strong> Generate security codes via an outside party that grants access.</li>
+<li><strong>Biometrics.</strong> A user presents a fingerprint or eye scan to gain access to the system.</li>
+</ul>
+<h1 id="authorization"><strong>Authorization</strong></h1>
+<p>Is the process of giving the user permission to access a specific resource or function.</p>
+<p>Authorization determines what resources a user can access.</p>
+<p>Authorization always takes place after authentication.</p>
+<p><strong>authorization is the process of verifying what specific applications, files, and data a user has access to.</strong></p>
+<h1 id="authentication-in-go"><strong>Authentication in Go</strong></h1>
+<h2 id="how-authentication-works"><strong>How authentication works</strong></h2>
+<p>A client sends the authentication request to the server with the credentials.</p>
+<p>The server validates the credentials with the database entry.</p>
+<p>If the match is successful, it writes something called <strong>cookie  (</strong> Cookies are <strong>small pieces of text sent to your browser by a website you visit )</strong>
+in the response.</p>
+<p>This <strong>cookie</strong> will be sent back from the client in the subsequent requests to the server which is used by the servers to validate if the cookie attached is valid (on the basis of the one sent in the first place).</p>
+<p><strong>Sessions</strong></p>
+<p>A <strong>session</strong> is a way to record users authentication related payload in a cookie over a period of time.</p>
+<p>When the user <strong>logs in</strong> in by sending valid credentials, the server attaches the cookie in the response.</p>
+<p>Then the client uses that cookie (saved in the browser or client service) to make future requests.</p>
+<p>When a client makes a <strong>logout</strong> request by sending a API on the server, the server destroys the session in the response.</p>
+<p>The server can also place an expiration on cookies so that the session expires after a certain time if there is no activity.</p>
+<p><strong>Code example</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/gorilla/mux&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/gorilla/sessions&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// dummy user data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">users</span> = <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;user1&#34;</span>: <span style="color:#e6db74">&#34;password&#34;</span>, <span style="color:#e6db74">&#34;user2&#34;</span>: <span style="color:#e6db74">&#34;password&#34;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// creating a cookie session store
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">store</span> = <span style="color:#a6e22e">sessions</span>.<span style="color:#a6e22e">NewCookieStore</span>([]byte(<span style="color:#e6db74">&#34;secret_key&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mux</span>.<span style="color:#a6e22e">NewRouter</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">HandleFunc</span>(<span style="color:#e6db74">&#34;/login&#34;</span>, <span style="color:#a6e22e">loginHandler</span>).<span style="color:#a6e22e">Methods</span>(<span style="color:#e6db74">&#34;POST&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">HandleFunc</span>(<span style="color:#e6db74">&#34;/logout&#34;</span>, <span style="color:#a6e22e">logoutHandler</span>).<span style="color:#a6e22e">Methods</span>(<span style="color:#e6db74">&#34;GET&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">HandleFunc</span>(<span style="color:#e6db74">&#34;/healthcheck&#34;</span>, <span style="color:#a6e22e">healthcheck</span>).<span style="color:#a6e22e">Methods</span>(<span style="color:#e6db74">&#34;GET&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// modifying http import struct to add an extra property
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// of timeout (good practice)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">httpServer</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Server</span>{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Handler</span>:      <span style="color:#a6e22e">r</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Addr</span>:         <span style="color:#e6db74">&#34;127.0.0.1:8000&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">WriteTimeout</span>: <span style="color:#ae81ff">15</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>,
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Server start at port 8000&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">httpServer</span>.<span style="color:#a6e22e">ListenAndServe</span>())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">loginHandler</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;loginHandler&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Method</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;POST&#34;</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;Method Not Supported&#34;</span>, <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusMethodNotAllowed</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ParseForm parses the raw query from the URL and updates r.Form
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">ParseForm</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;Please pass the data as URL form encoded&#34;</span>, <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusBadRequest</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">username</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Form</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;username&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">password</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Form</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;password&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// check if user exists
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">storedPassword</span>, <span style="color:#a6e22e">exists</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">users</span>[<span style="color:#a6e22e">username</span>]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">exists</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Get registers and returns a session for the given name and session store.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// session.id is the name of the cookie that will be stored in the client&#39;s browser
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">session</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#a6e22e">r</span>, <span style="color:#e6db74">&#34;session.id&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">storedPassword</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">password</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">&#34;authenticated&#34;</span>] = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// saves all sessions used during the current request
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Save</span>(<span style="color:#a6e22e">r</span>, <span style="color:#a6e22e">w</span>)
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;Invalid Credentials&#34;</span>, <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusUnauthorized</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Login successfully!&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#e6db74">&#34;Login successfully!&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">logoutHandler</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Get registers and returns a session for the given name and session store
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// session.id is the name of the cookie that will be stored in the client&#39;s browser
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">session</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#a6e22e">r</span>, <span style="color:#e6db74">&#34;session.id&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Set the authenticated value on the session to false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">&#34;authenticated&#34;</span>] = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Save</span>(<span style="color:#a6e22e">r</span>, <span style="color:#a6e22e">w</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Logout Successful&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#e6db74">&#34;Logout Successful&#34;</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">healthcheck</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">session</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#a6e22e">r</span>, <span style="color:#e6db74">&#34;session.id&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">authenticated</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Values</span>[<span style="color:#e6db74">&#34;authenticated&#34;</span>]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">authenticated</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">authenticated</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">false</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#e6db74">&#34;Welcome!&#34;</span>))
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;Forbidden&#34;</span>, <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusForbidden</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/makevsnew/"
+      ><span class="mr-1.5">←</span><span>Make VS New</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/dsa/"
+      ><span>Data stuctures and Algorithms</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="">Go Skills</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

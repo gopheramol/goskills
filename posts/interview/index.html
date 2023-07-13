@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Golang Interview Questions - Go Skills</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="Why Go 1.Simplicity : simple and easy to understand, syntax is clean.
+2.Concurrency : build-in support through goroutines and channels.
+3.Efficiency: compiles to machine code, GC manages memory automatically.
+4.Scalability: handle large no of connections to perform concurrent operations without sacrificing performance.
+5.Strong community and ecosystem : standard library provides robust functionality for common tasks.
+6.Cross-platform development
+Googles backing Goroutines A goroutine is a function or method that can be executed concurrently with other goroutines." />
+  <meta name="author" content="Amol Gaikwad" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="theme.png" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/a/AAcHTtc3mYt4p6ySf3dBzQJpgn3kiq3L0vVAsoWjEcwYfaM=s64-c-rg-br100" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="twitter.svg" />
+  
+  <link rel="preload" as="image" href="github.svg" />
+  
+  <link rel="preload" as="image" href="linkedin.svg" />
+  
+  <link rel="preload" as="image" href="rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.114.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Golang Interview Questions" />
+<meta property="og:description" content="Why Go 1.Simplicity : simple and easy to understand, syntax is clean.
+2.Concurrency : build-in support through goroutines and channels.
+3.Efficiency: compiles to machine code, GC manages memory automatically.
+4.Scalability: handle large no of connections to perform concurrent operations without sacrificing performance.
+5.Strong community and ecosystem : standard library provides robust functionality for common tasks.
+6.Cross-platform development
+Googles backing Goroutines A goroutine is a function or method that can be executed concurrently with other goroutines." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/interview/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-10T08:48:09+05:30" />
+<meta property="article:modified_time" content="2023-06-10T08:48:09+05:30" />
+
+  
+  <meta itemprop="name" content="Golang Interview Questions">
+<meta itemprop="description" content="Why Go 1.Simplicity : simple and easy to understand, syntax is clean.
+2.Concurrency : build-in support through goroutines and channels.
+3.Efficiency: compiles to machine code, GC manages memory automatically.
+4.Scalability: handle large no of connections to perform concurrent operations without sacrificing performance.
+5.Strong community and ecosystem : standard library provides robust functionality for common tasks.
+6.Cross-platform development
+Googles backing Goroutines A goroutine is a function or method that can be executed concurrently with other goroutines."><meta itemprop="datePublished" content="2023-06-10T08:48:09+05:30" />
+<meta itemprop="dateModified" content="2023-06-10T08:48:09+05:30" />
+<meta itemprop="wordCount" content="1025">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Golang Interview Questions"/>
+<meta name="twitter:description" content="Why Go 1.Simplicity : simple and easy to understand, syntax is clean.
+2.Concurrency : build-in support through goroutines and channels.
+3.Efficiency: compiles to machine code, GC manages memory automatically.
+4.Scalability: handle large no of connections to perform concurrent operations without sacrificing performance.
+5.Strong community and ecosystem : standard library provides robust functionality for common tasks.
+6.Cross-platform development
+Googles backing Goroutines A goroutine is a function or method that can be executed concurrently with other goroutines."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href=""
+      >Go Skills</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/amolasg"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gopheramol"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/amolasg/"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Golang Interview Questions</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jun 10, 2023</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h2 id="why-go"><strong>Why Go</strong></h2>
+<p>1.<strong>Simplicity</strong> : simple and easy to understand, syntax is clean.</p>
+<p>2.<strong>Concurrency</strong> : build-in support through goroutines and channels.</p>
+<p>3.<strong>Efficiency</strong>: compiles to machine code, GC manages memory automatically.</p>
+<p>4.<strong>Scalability</strong>: handle large no of connections to perform concurrent operations without sacrificing performance.</p>
+<p>5.<strong>Strong community and ecosystem</strong> : standard library provides robust functionality for common tasks.</p>
+<p>6.<strong>Cross-platform development</strong></p>
+<ol start="7">
+<li><strong>Googles backing</strong></li>
+</ol>
+<h2 id="goroutines"><strong>Goroutines</strong></h2>
+<p>A goroutine is a function or method that can be executed concurrently with other goroutines.</p>
+<p>Goroutines are lightweight threads that allow concurrent execution of functions.</p>
+<h2 id="channels"><strong>Channels</strong></h2>
+<p>Channels facilitate communication and synchronization between goroutines.</p>
+<p>They are used to send and receive values between goroutines.</p>
+<h2 id="types-channels"><strong>Types channels</strong>:</h2>
+<ol>
+<li><strong>Buffered channel</strong></li>
+<li><strong>Unbuffered channel</strong></li>
+</ol>
+<h3 id="buffering"><strong>Buffering</strong>:</h3>
+<p>Buffered channels have a specified buffer size, allowing them to hold multiple values before blocking the sender.</p>
+<p>Unbuffered channels have a capacity of 0 and can only hold a single value at a time.</p>
+<h3 id="blocking-behavior"><strong>Blocking Behavior</strong>:</h3>
+<p>In an unbuffered channel, both the sender and receiver block until they can complete the communication, ensuring synchronization between the goroutines.</p>
+<p>In a buffered channel, the sender will only block if the buffer is full, and the receiver will block if the buffer is empty.</p>
+<h3 id="synchronous-vs-asynchronous"><strong>Synchronous vs. Asynchronous</strong>:</h3>
+<p><strong>Unbuffered</strong> channels provide <strong>synchronous communication</strong>, meaning both the sender and receiver must be ready at the same time for the communication to proceed.</p>
+<p><strong>Buffered</strong> channels provide <strong>asynchronous communication</strong>, allowing the sender and receiver to operate independently as long as the buffer is not full or empty.</p>
+<h3 id="level-of-coupling"><strong>Level of Coupling:</strong></h3>
+<p>Unbuffered channels tightly couple the sender and receiver, requiring them to be available simultaneously.</p>
+<p>Buffered channels allow for looser coupling, as they can store values in the buffer for later retrieval, allowing the sender and receiver to operate at different speeds.</p>
+<h2 id="wait-groups"><strong>Wait Groups</strong></h2>
+<p>WaitGroup is a synchronization primitive that allows you to wait for a collection of goroutines to complete their execution before continuing.</p>
+<p>It provides a way to coordinate and wait for the completion of multiple goroutines.</p>
+<h2 id="mutexes"><strong>Mutexes</strong></h2>
+<p>A mutex is a type of synchronization mechanism that allows multiple goroutines to access shared data concurrently</p>
+<h2 id="interfaces"><strong>Interfaces</strong></h2>
+<p>In go, an interface is a collection of method signatures that a type can implement.</p>
+<p>An interface specifies a set of behaviors or actions that a type can perform,Without specifying how those behaviors are implemented.</p>
+<p>This allows different types to implement the same interface in their own way.</p>
+<h3 id="interfaces-used-for-"><strong>Interfaces used for</strong> :</h3>
+<p>1.Where Polymorphism is needed</p>
+<p>2.Mock object in testing</p>
+<p>3.To achieve better abstraction</p>
+<p>4.Code decoupling</p>
+<p>5.Interoperability</p>
+<h2 id="slices"><strong>Slices</strong></h2>
+<p>In Go, a slice is a flexible and dynamic data structure that provides a more powerful and convenient way to work with collections of elements compared to arrays.</p>
+<p>A slice is built on top of an underlying array and represents a variable-length sequence of elements of the same type.</p>
+<p><strong>Slices are reference types</strong></p>
+<p>A slice has two properties: length and capacity.</p>
+<p>The length of a slice represents the number of elements it currently holds.</p>
+<p>The capacity of a slice is the maximum number of elements it can hold without reallocation.</p>
+<h2 id="reference-types-in-go"><strong>Reference types in Go</strong></h2>
+<ul>
+<li>Slices</li>
+<li>Maps</li>
+<li>Channels</li>
+<li>Pointers</li>
+</ul>
+<h2 id="nil"><strong>Nil</strong></h2>
+<p>In Go, nil is a special value that represents the absence of a value or a zero value for certain types.</p>
+<p>It is commonly used to indicate that a pointer, slice, map, channel, or interface does not currently refer to any underlying value or object.</p>
+<p>Pointers: A nil pointer does not point to any memory address.</p>
+<p>It is the zero value for pointer types and is represented as nil.</p>
+<p>Slices, Maps, and Channels: A nil slice, map, or channel represents an uninitialized or empty value of that type.</p>
+<p>Interfaces: An interface value that is nil does not hold any underlying value or type.</p>
+<h2 id="maps"><strong>Maps</strong></h2>
+<p>In Go, a map is a built-in data structure that represents an unordered collection of key-value pairs.</p>
+<p>make function is used to create an empty map with an initial capacity, while a map literal allows you to initialize a map with key-value pairs directly.</p>
+<h2 id="struct"><strong>Struct</strong></h2>
+<p>In Go, a struct is a composite data type that allows you to group together zero or more values of different types into a single entity.</p>
+<p>It is a way to define custom data structures that can represent real-world objects or concepts.</p>
+<p>Structs are value types in Go, which means that when you assign a struct to a new variable or pass it as a function argument,</p>
+<p>a copy of the entire struct is made.</p>
+<p>Modifications made to the copied struct will not affect the original struct.</p>
+<h2 id="differentiate-between-new-function-and-make-function"><strong>Differentiate between new() function and make() function</strong></h2>
+<p>new: The new built-in function allocates memory but does not initialize it .</p>
+<p>make: The make built-in function allocates and initializes an object of type slice, map, or chan (only).</p>
+<h2 id="differentiate-between-byte-and-rune"><strong>Differentiate between Byte and Rune</strong></h2>
+<p>A byte in Go is an unsigned 8-bit integer <strong>uint8</strong></p>
+<p>rune, which has type <strong>int32</strong></p>
+<h2 id="embedded-structs"><strong>Embedded structs</strong></h2>
+<p>embedded struct is a way to include a struct type as a field within another struct.</p>
+<p>This allows the outer struct to inherit the fields and methods of the embedded struct, providing a form of composition and code reuse.</p>
+<h2 id="struct-composition"><strong>Struct composition</strong></h2>
+<p>Struct composition refers to the practice of creating a new struct type by combining or embedding existing struct types as fields.</p>
+<p>It allows you to build more complex data structures by composing multiple smaller structures together.</p>
+<h2 id="function-closures"><strong>function closures</strong></h2>
+<p>A closure is a function that references variables outside its own function body (scope).</p>
+<h2 id="methods"><strong>Methods</strong></h2>
+<p>Method is a function that is associated with a specific type.</p>
+<p>It enables you to define behavior and functionality for a particular type by attaching functions to it.</p>
+<h2 id="pass-by-value"><strong>Pass by Value</strong></h2>
+<p>When a variable is passed by value, a copy of its value is made and assigned to a new variable within the function.</p>
+<p>Any changes made to the new variable will not affect the original variable outside the function.</p>
+<h2 id="pass-by-reference"><strong>Pass by Reference</strong></h2>
+<p>When a variable is passed by reference, the memory address of the variable is passed to the function. This means that changes made to the variable within the function will affect the original variable outside the function.</p>
+<p>In Go, all variables are passed by value by default. However, you can achieve pass-by-reference behavior by using pointers.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/concurrency/"
+      ><span class="mr-1.5">←</span><span>Concurrency</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/interfaces/"
+      ><span>Interfaces</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="">Go Skills</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

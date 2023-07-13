@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Interfaces - Go Skills</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="Interfaces In Go, an interface is a collection of method signatures that a type can implement.
+An interface specifies a set of behaviors or actions that a type can perform, without specifying how those behaviors are implemented.
+This allows different types to implement the same interface in their own way.
+A type that implements an interface is said to &ldquo;satisfy&rdquo; the interface, and it must implement all the methods defined in the interface." />
+  <meta name="author" content="Amol Gaikwad" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="theme.png" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/a/AAcHTtc3mYt4p6ySf3dBzQJpgn3kiq3L0vVAsoWjEcwYfaM=s64-c-rg-br100" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="twitter.svg" />
+  
+  <link rel="preload" as="image" href="github.svg" />
+  
+  <link rel="preload" as="image" href="linkedin.svg" />
+  
+  <link rel="preload" as="image" href="rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.114.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Interfaces" />
+<meta property="og:description" content="Interfaces In Go, an interface is a collection of method signatures that a type can implement.
+An interface specifies a set of behaviors or actions that a type can perform, without specifying how those behaviors are implemented.
+This allows different types to implement the same interface in their own way.
+A type that implements an interface is said to &ldquo;satisfy&rdquo; the interface, and it must implement all the methods defined in the interface." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/interfaces/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-10T08:48:09+05:30" />
+<meta property="article:modified_time" content="2023-06-10T08:48:09+05:30" />
+
+  
+  <meta itemprop="name" content="Interfaces">
+<meta itemprop="description" content="Interfaces In Go, an interface is a collection of method signatures that a type can implement.
+An interface specifies a set of behaviors or actions that a type can perform, without specifying how those behaviors are implemented.
+This allows different types to implement the same interface in their own way.
+A type that implements an interface is said to &ldquo;satisfy&rdquo; the interface, and it must implement all the methods defined in the interface."><meta itemprop="datePublished" content="2023-06-10T08:48:09+05:30" />
+<meta itemprop="dateModified" content="2023-06-10T08:48:09+05:30" />
+<meta itemprop="wordCount" content="639">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Interfaces"/>
+<meta name="twitter:description" content="Interfaces In Go, an interface is a collection of method signatures that a type can implement.
+An interface specifies a set of behaviors or actions that a type can perform, without specifying how those behaviors are implemented.
+This allows different types to implement the same interface in their own way.
+A type that implements an interface is said to &ldquo;satisfy&rdquo; the interface, and it must implement all the methods defined in the interface."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href=""
+      >Go Skills</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/amolasg"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gopheramol"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/amolasg/"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Interfaces</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jun 10, 2023</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h1 id="interfaces">Interfaces</h1>
+<p>In Go, an interface is a <strong>collection of method signatures</strong> that a type can implement.</p>
+<p>An interface specifies a set of behaviors or actions that a type can perform, without specifying how those behaviors are implemented.</p>
+<p>This allows different types to implement the same interface in their own way.</p>
+<p>A type that implements an interface is said to &ldquo;satisfy&rdquo; the interface, and it must implement all the methods defined in the interface.</p>
+<h2 id="where-to-use">Where to use</h2>
+<ul>
+<li><strong>Abstraction</strong> - allow you to define a contract between different parts of a program without specifying how that contract will be implemented.</li>
+<li><strong>Polymorphism</strong> - allows different types to be used interchangeably, as long as they implement the same interface.</li>
+<li><strong>Testability</strong> - By defining interfaces for dependencies, you can create mock implementations of those dependencies that can be used for testing.</li>
+<li><strong>Flexibility</strong> - makes it easier to add new types to your program and make changes without having to modify existing code.</li>
+</ul>
+<p>Example :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Shape</span> <span style="color:#66d9ef">interface</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Area</span>() <span style="color:#66d9ef">float64</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Circle</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Radius</span> <span style="color:#66d9ef">float64</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Reactangle</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">legth</span> <span style="color:#66d9ef">float64</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Width</span> <span style="color:#66d9ef">float64</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">Circle</span>) <span style="color:#a6e22e">Area</span>() <span style="color:#66d9ef">float64</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Radius</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3.14</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">r</span> <span style="color:#a6e22e">Reactangle</span>) <span style="color:#a6e22e">Area</span>() <span style="color:#66d9ef">float64</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">legth</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Width</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">printArea</span>(<span style="color:#a6e22e">s</span> <span style="color:#a6e22e">Shape</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Area of shape: %f\n&#34;</span>, <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">Area</span>())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Circle</span>{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Radius</span>: <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Reactangle</span>{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">legth</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Width</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">printArea</span>(<span style="color:#a6e22e">c</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">printArea</span>(<span style="color:#a6e22e">r</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="use-cases">Use cases</h2>
+<ol>
+<li>Standard library: Go&rsquo;s standard library makes heavy use of interfaces. For example, the <strong><code>io</code></strong> package defines several interfaces for input and output, such as <strong><code>io.Reader</code></strong>, <strong><code>io.Writer</code></strong>, and <strong><code>io.Closer</code></strong>. These interfaces allow different types of input and output streams to be used interchangeably, as long as they implement the required methods.</li>
+<li>Web development: In web development, interfaces are often used to define the behavior of HTTP handlers. For example, the <strong><code>http.Handler</code></strong> interface defines a single method <strong><code>ServeHTTP</code></strong>, which takes an <strong><code>http.ResponseWriter</code></strong> and an <strong><code>http.Request</code></strong> and returns nothing. Any type that implements this method can be used as an HTTP handler.</li>
+</ol>
+<p>Go interface vs java interfaces</p>
+<p>Go interfaces and Java interfaces are similar in that they both allow you to define a set of methods that a type must implement in order to satisfy the interface. However, there are some key differences between the two:</p>
+<ol>
+<li>Go interfaces are implicit, while Java interfaces are explicit: In Go, a type satisfies an interface simply by implementing the required methods, regardless of whether the type explicitly declares that it implements the interface. In Java, on the other hand, a type must explicitly declare that it implements an interface using the <strong><code>implements</code></strong> keyword.</li>
+<li>Go interfaces can contain any number of methods, while Java interfaces can contain only a fixed number of methods: In Go, an interface can contain any number of methods, including zero. In Java, an interface must contain at least one method, and it can contain any number of methods up to a maximum of 64.</li>
+<li>Go interfaces can be used as fields, while Java interfaces cannot: In Go, an interface can be used as a field in a struct or as an element in an array. In Java, an interface cannot be used as a field in a class.</li>
+<li>Go interfaces do not have static or default methods, while Java interfaces do: In Java, interfaces can have static and default methods, which are methods that have an implementation and can be called directly on the interface. In Go, interfaces do not have static or default methods, and all methods in an interface must be implemented by any type that satisfies the interface.</li>
+</ol>
+<p>Interfaces are a powerful feature of Go that allow you to write flexible and modular code that can work with multiple types. They are used extensively in the standard library and are an essential part of the Go programming language.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/interview/"
+      ><span class="mr-1.5">←</span><span>Golang Interview Questions</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/microservices/"
+      ><span>Microservices</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="">Go Skills</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

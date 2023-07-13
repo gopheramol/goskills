@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go Skills</title>
+    <link>/</link>
+    <description>Recent content on Go Skills</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 Jun 2023 21:56:00 +0530</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang Paradigms Constructs and Idioms</title>
+      <link>/posts/golang/</link>
+      <pubDate>Wed, 21 Jun 2023 21:56:00 +0530</pubDate>
+      
+      <guid>/posts/golang/</guid>
+      <description>Paradigms The Go programming language is designed with a specific set of paradigms and principles in mind. Here are the main paradigms that Go follows:
+Imperative programming: Go is primarily an imperative programming language, where the focus is on specifying step-by-step instructions for the computer to follow. It provides features such as loops, conditionals, and variable assignments to control the flow of execution. Concurrent programming: Go has built-in support for concurrent programming through goroutines and channels.</description>
+    </item>
+    
+    <item>
+      <title>Logical Coding Questions Asked in Interviews</title>
+      <link>/posts/logic-coding-que/</link>
+      <pubDate>Sat, 17 Jun 2023 21:38:00 +0530</pubDate>
+      
+      <guid>/posts/logic-coding-que/</guid>
+      <description>Find the subset having total is zero Input : [4,2,-6,3,3,-6] Reverse a word Input : I am an Indian Output: I ma na naidnI Sort fruit name by count and with int Input : [&amp;#34;apple&amp;#34;,&amp;#34;mango&amp;#34;,&amp;#34;orange&amp;#34;,&amp;#34;apple&amp;#34;,&amp;#34;apple&amp;#34;,&amp;#34;orange&amp;#34;,&amp;#34;apple&amp;#34;] Output : apple-4 orange-2 mango-1 Find out second largest number Consecutive string Input : aaabbcda Output: a:3,b:2,c:1,d:1,a:1 Even-Odd number using goroutines Two sum problem Input : [1,5,6,7,2] Target : 6 Output: [0,1] print indexes. Find the median Find the unique elements from array Input : [1,5,6,7,5,1] Output: 1,5,6,7 Return unique elements from array using map Count the number of strings from array Input : [“I am an Indian”] Output: 4 Keep adding the individual digits of the sum until it&amp;rsquo;s a single digit Input : 54321 Output: 6 Exp : 5+4+3+2+1 = 15 = 1+5 = 6 Merge and get sorted unique linked list Input : List1 = head → 4 → 50 → 12 → NULL List2 = head → 10 → 1 → 60 → NULL Output: head → 1 → 4 → 10 → 12 → 50 → 60 Find min and Max sum if I choose any 4 elements in this array Input : arr :[] {1,3,5,7,9} Output should be Minimum 16, maximum 24 Valid anagram https://leetcode.</description>
+    </item>
+    
+    <item>
+      <title>Most commonly asked interview theory questions.</title>
+      <link>/posts/theory-que/</link>
+      <pubDate>Sat, 17 Jun 2023 21:29:31 +0530</pubDate>
+      
+      <guid>/posts/theory-que/</guid>
+      <description>Why golang What is goroutines What is channels Types of channels - Buffered &amp;amp; Unbuffered channel Where you used goroutine and channels in project What is wait groups What is Mutexes / how to avoid race condition in Go-routines talking each other one is failed to send data to another how you handle What is interfaces What is methods What are the reference types in golang How to generate in go mock / go mocking?</description>
+    </item>
+    
+    <item>
+      <title>Golang Coding Questions</title>
+      <link>/posts/golang-coding-que/</link>
+      <pubDate>Fri, 16 Jun 2023 08:02:26 +0530</pubDate>
+      
+      <guid>/posts/golang-coding-que/</guid>
+      <description>Coding Questions 1. Print Even-Odd numbers using goroutine and channel Solution 1 : Simplest way
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) func main() { wg := sync.WaitGroup{} numCh := make(chan int) wg.Add(1) go evenOdd(numCh, &amp;amp;wg) for i := 1; i &amp;lt;= 100; i++ { numCh &amp;lt;- i } close(numCh) wg.Wait() } func evenOdd(numCh chan int, wg *sync.WaitGroup) { defer wg.Done() for num := range numCh { if num%2 == 0 { fmt.</description>
+    </item>
+    
+    <item>
+      <title>Linux commands you should know</title>
+      <link>/posts/linuxcommands/</link>
+      <pubDate>Thu, 15 Jun 2023 08:26:07 +0530</pubDate>
+      
+      <guid>/posts/linuxcommands/</guid>
+      <description>Linux commands ls: Lists directory contents. ls ls -l ls -a cd: Changes the current directory. cd /path/to/directory cd .. pwd: Prints the current working directory. mkdir: Creates a new directory. mkdir directory_name rm: Removes files and directories. rm file_name rm -r directory_name cp: Copies files and directories. cp file_name new_file_name cp -r directory_name new_directory_name mv: Moves or renames files and directories. mv file_name new_location/file_name mv old_name new_name cat: Concatenates and displays file content.</description>
+    </item>
+    
+    <item>
+      <title>System Design Concepts</title>
+      <link>/posts/systemdesign/</link>
+      <pubDate>Tue, 13 Jun 2023 09:10:28 +0530</pubDate>
+      
+      <guid>/posts/systemdesign/</guid>
+      <description>System Design When it comes to system design, there are several important concepts that every programmer should learn to build scalable, efficient, and robust systems.
+System design key concepts you should know Scalability Scalability refers to the ability of a system to handle increasing workloads by efficiently and effectively adding resources.
+Scalability can be achieved through two primary approaches: horizontal scaling and vertical scaling.
+Horizontal scaling is the process of adding more servers or nodes to handle increasing workloads.</description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>/posts/docker/</link>
+      <pubDate>Sun, 11 Jun 2023 11:45:57 +0530</pubDate>
+      
+      <guid>/posts/docker/</guid>
+      <description>Docker is an open-source platform that enables developers to automate the deployment, scaling, and management of applications within isolated environments called containers.
+Containers provide a lightweight and portable way to package software and its dependencies, allowing applications to run consistently across different computing environments.
+Here are some key concepts and components related to Docker: Container: A container is a standalone executable unit that packages an application and its dependencies, including libraries, binaries, and configuration files.</description>
+    </item>
+    
+    <item>
+      <title>Slices</title>
+      <link>/posts/slices/</link>
+      <pubDate>Sat, 10 Jun 2023 22:11:31 +0530</pubDate>
+      
+      <guid>/posts/slices/</guid>
+      <description>Array Go’s arrays are values (value type) means whenever you assign an array to a new variable then the copy of the original array is assigned to the new variable.
+This is also called as deep copy.
+The main issue an array has is that it can not be resized.
+Arrays do not need to be initialised explicitly; the zero value of an array is a ready-to-use array whose elements are themselves zeroed:</description>
+    </item>
+    
+    <item>
+      <title>Type Casting Type Conversion and Type Assertion</title>
+      <link>/posts/typecast/</link>
+      <pubDate>Sat, 10 Jun 2023 21:55:44 +0530</pubDate>
+      
+      <guid>/posts/typecast/</guid>
+      <description>Type Casting vs Type Conversion In computer programming, &amp;ldquo;type casting&amp;rdquo; and &amp;ldquo;type conversion&amp;rdquo; refer to the process of converting a value from one data type to another.
+These terms are often used interchangeably, but they can have slightly different meanings depending on the context.
+Type casting refers to the process of explicitly converting a value from one data type to another, typically using a type casting operator or function provided by the programming language.</description>
+    </item>
+    
+    <item>
+      <title>Make VS New</title>
+      <link>/posts/makevsnew/</link>
+      <pubDate>Sat, 10 Jun 2023 21:42:10 +0530</pubDate>
+      
+      <guid>/posts/makevsnew/</guid>
+      <description>New The new built-in function allocates memory.
+The first argument is a type, not a value, and the value returned is a pointer to a newly allocated zero value of that type.
+Returns pointer initialises to zero value of the type used for all types package main import &amp;#34;fmt&amp;#34; type Person struct { Name string Age int } func main() { personPtr := new(Person) personPtr.Name = &amp;#34;John Doe&amp;#34; personPtr.Age = 30 fmt.</description>
+    </item>
+    
+    <item>
+      <title>Authentication and Authorization</title>
+      <link>/posts/auth/</link>
+      <pubDate>Sat, 10 Jun 2023 21:33:26 +0530</pubDate>
+      
+      <guid>/posts/auth/</guid>
+      <description>Authentication mechanism Definition(s):
+Hardware or software-based mechanisms that force users to prove their identity before accessing data on a device.
+Authentication Is the act of validating that users are whom they claim to be.
+( Confirms users are who they say they are)
+This is the first step in any security process.
+If a user enters the correct data, the system assumes the identity is valid and grants access.
+One-time pins.</description>
+    </item>
+    
+    <item>
+      <title>Data stuctures and Algorithms</title>
+      <link>/posts/dsa/</link>
+      <pubDate>Sat, 10 Jun 2023 21:29:25 +0530</pubDate>
+      
+      <guid>/posts/dsa/</guid>
+      <description>🛑 Types of Data Structure 🛑
+🌟 Arrays: An array is a data structure that stores a fixed-size sequential collection of elements of the same type. Elements in an array can be accessed and modified by their index, which is an integer value that represents their position in the array.
+📚 Lists: A list is a dynamic data structure that stores a sequence of elements of any type. Unlike arrays, the size of a list can be changed during runtime.</description>
+    </item>
+    
+    <item>
+      <title>Mutex</title>
+      <link>/posts/mutex/</link>
+      <pubDate>Sat, 10 Jun 2023 21:22:36 +0530</pubDate>
+      
+      <guid>/posts/mutex/</guid>
+      <description>Mutex, what is mutex as per your understanding In the Go programming language, a mutex (short for &amp;ldquo;mutual exclusion&amp;rdquo;) is a type of synchronization mechanism that allows multiple goroutines (lightweight threads of execution) to access shared data concurrently, while protecting against race conditions and data corruption.
+A mutex is used to protect a critical section of code, which is a block of code that must be executed by only one goroutine at a time.</description>
+    </item>
+    
+    <item>
+      <title>Goruntime</title>
+      <link>/posts/goruntime/</link>
+      <pubDate>Sat, 10 Jun 2023 21:19:52 +0530</pubDate>
+      
+      <guid>/posts/goruntime/</guid>
+      <description>Go runtime The Go runtime is the part of the Go programming language that is responsible for managing the execution of Go programs. It includes the Go compiler, garbage collector, and other components that are responsible for executing Go code.
+It consists of several components, including:
+Goroutine scheduler: The runtime scheduler is responsible for scheduling goroutines on multiple OS threads in order to make full use of available CPU resources. Garbage collector: The Go runtime includes a concurrent, mark-and-sweep garbage collector that manages the allocation and deallocation of memory used by Go programs.</description>
+    </item>
+    
+    <item>
+      <title>Gotools</title>
+      <link>/posts/gotools/</link>
+      <pubDate>Sat, 10 Jun 2023 21:15:32 +0530</pubDate>
+      
+      <guid>/posts/gotools/</guid>
+      <description>Go tools Go comes with a set of tools that are used for tasks such as building, testing, and managing Go code. These tools are all built using Go itself, and they can be used from the command line.
+Here is a list of some of the most common Go tools:
+go build: This tool is used to build Go packages and create executables. It takes a list of Go packages and builds them, along with any dependencies, into a single executable or shared library.</description>
+    </item>
+    
+    <item>
+      <title>Aws</title>
+      <link>/posts/aws/</link>
+      <pubDate>Sat, 10 Jun 2023 21:13:18 +0530</pubDate>
+      
+      <guid>/posts/aws/</guid>
+      <description>Amazon Web Services (AWS) offers a wide range of cloud computing services and solutions to help organizations with their infrastructure, storage, database, networking, analytics, machine learning, artificial intelligence, and more. Here are some of the key AWS services:
+Compute Services: Amazon Elastic Compute Cloud (EC2): Provides scalable virtual servers in the cloud. AWS Lambda: Runs code without provisioning or managing servers. Storage Services: Amazon Simple Storage Service (S3): Offers scalable object storage for files and data.</description>
+    </item>
+    
+    <item>
+      <title>Concurrency</title>
+      <link>/posts/concurrency/</link>
+      <pubDate>Sat, 10 Jun 2023 08:48:09 +0530</pubDate>
+      
+      <guid>/posts/concurrency/</guid>
+      <description>What is concurrency Concurrency is the ability of a system or program to have multiple tasks in progress at the same time. It is a way of designing and organizing a system to allow multiple tasks to overlap in their execution, rather than executing them sequentially one after the other.
+Concurrency is often used in the context of computer programming, where it allows multiple tasks to be performed concurrently within a single program.</description>
+    </item>
+    
+    <item>
+      <title>Golang Interview Questions</title>
+      <link>/posts/interview/</link>
+      <pubDate>Sat, 10 Jun 2023 08:48:09 +0530</pubDate>
+      
+      <guid>/posts/interview/</guid>
+      <description>Why Go 1.Simplicity : simple and easy to understand, syntax is clean.
+2.Concurrency : build-in support through goroutines and channels.
+3.Efficiency: compiles to machine code, GC manages memory automatically.
+4.Scalability: handle large no of connections to perform concurrent operations without sacrificing performance.
+5.Strong community and ecosystem : standard library provides robust functionality for common tasks.
+6.Cross-platform development
+Googles backing Goroutines A goroutine is a function or method that can be executed concurrently with other goroutines.</description>
+    </item>
+    
+    <item>
+      <title>Interfaces</title>
+      <link>/posts/interfaces/</link>
+      <pubDate>Sat, 10 Jun 2023 08:48:09 +0530</pubDate>
+      
+      <guid>/posts/interfaces/</guid>
+      <description>Interfaces In Go, an interface is a collection of method signatures that a type can implement.
+An interface specifies a set of behaviors or actions that a type can perform, without specifying how those behaviors are implemented.
+This allows different types to implement the same interface in their own way.
+A type that implements an interface is said to &amp;ldquo;satisfy&amp;rdquo; the interface, and it must implement all the methods defined in the interface.</description>
+    </item>
+    
+    <item>
+      <title>Microservices</title>
+      <link>/posts/microservices/</link>
+      <pubDate>Sat, 10 Jun 2023 08:48:09 +0530</pubDate>
+      
+      <guid>/posts/microservices/</guid>
+      <description>What is micro services Microservices refer to a software architecture pattern where an application is built as a collection of small, loosely coupled, and independently deployable services. In this approach, the application is divided into multiple individual services, each responsible for a specific business functionality. These services can be developed, deployed, and scaled independently of each other.
+Drawbacks Increased complexity: Microservices introduce additional complexity compared to monolithic architectures. With multiple services communicating and interacting, the overall system can become more challenging to design, develop, deploy, and maintain.</description>
+    </item>
+    
+    <item>
+      <title>Databases</title>
+      <link>/posts/databases/</link>
+      <pubDate>Sat, 10 Jun 2023 07:48:09 +0530</pubDate>
+      
+      <guid>/posts/databases/</guid>
+      <description>Types of Databases 1️⃣ Relational Database: 🗃️
+Relational Databases (RDBMS): These databases use Structured Query Language (SQL) for defining and manipulating data. Examples: MySQL, Oracle, and PostgreSQL.
+A relational database is a type of database that organizes and stores data in tables with predefined relationships between them. It follows the relational model, where data is structured into rows and columns, and relationships between tables are defined through keys. Relational databases use SQL (Structured Query Language) for querying and manipulating data.</description>
+    </item>
+    
+  </channel>
+</rss>

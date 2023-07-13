@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Golang Paradigms Constructs and Idioms - Go Skills</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="Paradigms The Go programming language is designed with a specific set of paradigms and principles in mind. Here are the main paradigms that Go follows:
+Imperative programming: Go is primarily an imperative programming language, where the focus is on specifying step-by-step instructions for the computer to follow. It provides features such as loops, conditionals, and variable assignments to control the flow of execution. Concurrent programming: Go has built-in support for concurrent programming through goroutines and channels." />
+  <meta name="author" content="Amol Gaikwad" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="theme.png" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/a/AAcHTtc3mYt4p6ySf3dBzQJpgn3kiq3L0vVAsoWjEcwYfaM=s64-c-rg-br100" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="twitter.svg" />
+  
+  <link rel="preload" as="image" href="github.svg" />
+  
+  <link rel="preload" as="image" href="linkedin.svg" />
+  
+  <link rel="preload" as="image" href="rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.114.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Golang Paradigms Constructs and Idioms" />
+<meta property="og:description" content="Paradigms The Go programming language is designed with a specific set of paradigms and principles in mind. Here are the main paradigms that Go follows:
+Imperative programming: Go is primarily an imperative programming language, where the focus is on specifying step-by-step instructions for the computer to follow. It provides features such as loops, conditionals, and variable assignments to control the flow of execution. Concurrent programming: Go has built-in support for concurrent programming through goroutines and channels." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/golang/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-21T21:56:00+05:30" />
+<meta property="article:modified_time" content="2023-06-21T21:56:00+05:30" />
+
+  
+  <meta itemprop="name" content="Golang Paradigms Constructs and Idioms">
+<meta itemprop="description" content="Paradigms The Go programming language is designed with a specific set of paradigms and principles in mind. Here are the main paradigms that Go follows:
+Imperative programming: Go is primarily an imperative programming language, where the focus is on specifying step-by-step instructions for the computer to follow. It provides features such as loops, conditionals, and variable assignments to control the flow of execution. Concurrent programming: Go has built-in support for concurrent programming through goroutines and channels."><meta itemprop="datePublished" content="2023-06-21T21:56:00+05:30" />
+<meta itemprop="dateModified" content="2023-06-21T21:56:00+05:30" />
+<meta itemprop="wordCount" content="1348">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Golang Paradigms Constructs and Idioms"/>
+<meta name="twitter:description" content="Paradigms The Go programming language is designed with a specific set of paradigms and principles in mind. Here are the main paradigms that Go follows:
+Imperative programming: Go is primarily an imperative programming language, where the focus is on specifying step-by-step instructions for the computer to follow. It provides features such as loops, conditionals, and variable assignments to control the flow of execution. Concurrent programming: Go has built-in support for concurrent programming through goroutines and channels."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href=""
+      >Go Skills</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/amolasg"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gopheramol"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/amolasg/"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Golang Paradigms Constructs and Idioms</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jun 21, 2023</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h2 id="paradigms">Paradigms</h2>
+<p>The Go programming language is designed with a specific set of paradigms and principles in mind. Here are the main paradigms that Go follows:</p>
+<ol>
+<li><strong>Imperative programming</strong>: Go is primarily an imperative programming language, where the focus is on specifying step-by-step instructions for the computer to follow.
+It provides features such as loops, conditionals, and variable assignments to control the flow of execution.</li>
+<li><strong>Concurrent programming</strong>: Go has built-in support for concurrent programming through goroutines and channels. Goroutines are lightweight threads that allow concurrent execution of functions, while channels provide a way for goroutines to communicate and synchronize their activities.</li>
+<li><strong>Structured programming</strong>: Go encourages structured programming by promoting the use of functions and types. It supports the organization of code into smaller, reusable functions and the use of structured control flow constructs like loops and conditionals.</li>
+<li><strong>Procedural programming</strong>: Go follows the procedural programming paradigm, where programs are organized around procedures (functions) that operate on data structures. It emphasizes breaking down problems into smaller procedures and data abstractions.</li>
+<li><strong>Object-oriented programming (OOP)</strong>: Although Go does not support traditional class-based inheritance, it provides some mechanisms for object-oriented programming. It supports user-defined types, methods associated with those types, and interfaces that define behavior. However, Go favors composition over inheritance, encouraging the use of interfaces and embedding of types to achieve code reuse.</li>
+<li><strong>Functional programming</strong>: Go supports functional programming concepts to some extent. It allows functions to be treated as first-class citizens, supporting higher-order functions and function literals (closures). However, Go is not a pure functional programming language and does not provide some features commonly associated with functional languages, such as immutable data structures or pattern matching.</li>
+<li><strong>Minimalism</strong>: Go follows a minimalist approach to language design, aiming for simplicity, readability, and ease of use. It avoids complex features and syntax, focusing on a small set of orthogonal features that can be combined effectively. This simplicity helps in writing clean and maintainable code.</li>
+</ol>
+<p>It&rsquo;s important to note that Go is a multi-paradigm language, meaning that it supports various programming paradigms and allows developers to choose the most appropriate approach for their specific problem domain.</p>
+<h2 id="constructs">Constructs</h2>
+<p>Go provides several constructs that are integral to the language and play a significant role in writing Go programs. Here are some of the essential constructs in Go:</p>
+<ol>
+<li><strong>Packages</strong>: Go programs are organized into packages, which are collections of related Go source files. Packages provide encapsulation and allow code reuse. They help in organizing code and creating modular applications. Go has a standard library with a wide range of packages that provide various functionalities.</li>
+<li><strong>Functions</strong>: Functions are blocks of code that perform a specific task. Go uses the <strong><code>func</code></strong> keyword to declare functions. Functions can have parameters and return values. They are a fundamental building block of Go programs and can be called from other functions or used as goroutines for concurrent execution.</li>
+<li><strong>Variables</strong>: Variables are used to store and manipulate data in Go. They are declared using the <strong><code>var</code></strong> keyword and can be assigned values of a specific type. Go also supports short variable declarations using the <strong><code>:=</code></strong> operator. Variables can be declared at the package or function level.</li>
+<li><strong>Control Flow Statements</strong>: Go provides several control flow statements to control the flow of program execution. These include <strong><code>if</code></strong> statements for conditional execution, <strong><code>for</code></strong> loops for iterative execution, <strong><code>switch</code></strong> statements for multiple branching options, and <strong><code>defer</code></strong> statements for executing code at the end of a function.</li>
+<li><strong>Data Types</strong>: Go has various built-in data types, including basic types such as integers (<strong><code>int</code></strong>), floating-point numbers (<strong><code>float64</code></strong>), booleans (<strong><code>bool</code></strong>), and strings (<strong><code>string</code></strong>). It also supports composite types such as arrays, slices, maps, and structs. Additionally, Go allows the declaration of user-defined types using the <strong><code>type</code></strong> keyword.</li>
+<li><strong>Pointers</strong>: Go supports pointers, which are variables that store memory addresses. Pointers allow direct manipulation of memory and can be used for efficiency or to modify values indirectly. Go uses the <strong><code>&amp;</code></strong> operator to get the address of a variable and the <strong><code>*</code></strong> operator to dereference a pointer.</li>
+<li><strong>Methods</strong>: Go allows methods to be associated with user-defined types. Methods are functions with a special receiver parameter that operates on the associated type. They enable the definition of behaviors and actions specific to a particular type.</li>
+<li><strong>Interfaces</strong>: Interfaces define sets of method signatures that a type must implement to be considered as implementing that interface. They allow polymorphism and provide a way to achieve code reuse through composition. Go interfaces are implicitly satisfied, meaning that a type automatically satisfies an interface if it implements all the required methods.</li>
+<li><strong>Goroutines</strong>: Goroutines are lightweight concurrent execution units in Go. They are created using the <strong><code>go</code></strong> keyword and allow functions to be executed concurrently. Goroutines enable concurrent and parallel programming, making it easier to write efficient and scalable programs.</li>
+<li><strong>Channels</strong>: Channels provide a mechanism for communication and synchronization between goroutines. They allow safe passing of data between goroutines and can be used to coordinate their activities. Channels can be used to implement various concurrency patterns like message passing and synchronization.</li>
+</ol>
+<p>These are some of the key constructs in the Go programming language. Understanding and utilizing these constructs effectively allows developers to write efficient, readable, and concurrent programs in Go.</p>
+<h2 id="idioms">Idioms</h2>
+<p>Go has its own set of idioms and best practices that are commonly followed by Go developers to write clean, efficient, and idiomatic code. These idioms help maintain consistency across Go codebases and promote readability. Here are some of the idioms commonly used in the Go programming language:</p>
+<ol>
+<li><strong>Use short, descriptive names</strong>: Go favors short variable and function names that are concise but still descriptive. Avoid excessive abbreviation or overly long names. Use camel case for multi-word names (e.g., <strong><code>myVariable</code></strong>, <strong><code>calculateSum</code></strong>).</li>
+<li><strong>Package names</strong>: Package names should be short, lowercase, and use lowercase letters without underscores. Use simple, meaningful names that describe the purpose of the package. Avoid using generic names like <strong><code>util</code></strong> or <strong><code>common</code></strong> unless necessary.</li>
+<li><strong>Error handling</strong>: Go uses explicit error handling using the multiple return value pattern. Functions that can encounter errors typically return an additional error value as the last return value. It&rsquo;s common practice to check and handle errors explicitly using if statements rather than ignoring or suppressing errors.</li>
+<li><strong>Don&rsquo;t ignore errors</strong>: Ignoring errors using the <strong><code>_</code></strong> (blank identifier) is generally discouraged. It&rsquo;s considered good practice to handle or at least log errors to ensure proper error propagation and visibility.</li>
+<li><strong>Avoid global variables</strong>: Go encourages encapsulation and minimizing the use of global variables. Instead, prefer passing data explicitly as function arguments or using dependency injection when appropriate.</li>
+<li><strong>Use defer for resource cleanup</strong>: Go provides the <strong><code>defer</code></strong> statement, which allows you to schedule a function call to be executed when the surrounding function exits. It&rsquo;s commonly used for resource cleanup and to ensure that certain actions are performed regardless of how the function exits (e.g., closing files or releasing locks).</li>
+<li><strong>Prefer composition over inheritance</strong>: Go does not have traditional class-based inheritance. Instead, it promotes composition by embedding types within other types. This allows code reuse and extensibility while maintaining simplicity and flexibility.</li>
+<li><strong>Use goroutines and channels for concurrency</strong>: Go has built-in support for concurrency through goroutines and channels. Prefer using goroutines and channels for concurrent programming instead of explicit locking or thread management. It helps in writing concurrent and scalable code.</li>
+<li><strong>Avoid premature optimization</strong>: Go follows the principle of &ldquo;simplicity and clarity first.&rdquo; Write clean and readable code before focusing on optimization. Use profiling tools to identify performance bottlenecks, rather than prematurely optimizing code that may not be a bottleneck.</li>
+<li><strong>Write tests</strong>: Go has a strong emphasis on testing. Write tests for your code using the built-in testing package (<strong><code>testing</code></strong>). Write both unit tests and integration tests to ensure the correctness and stability of your code.</li>
+</ol>
+<p>These idioms provide a starting point for writing idiomatic Go code, but it&rsquo;s important to note that they are not strict rules. Different codebases and projects may have their own variations based on specific requirements and preferences. It&rsquo;s always a good idea to follow the established idioms and practices within a particular codebase or community.</p>
+<h2 id="references">References</h2>
+<p><a href="https://go.dev/doc/effective_go">Effective Go - The Go Programming Language</a></p>
+<p><a href="https://dmitri.shuralyov.com/idiomatic-go">Dmitri Shuralyov - Idiomatic Go</a></p>
+<p><a href="https://dave.cheney.net/2020/02/23/the-zen-of-go">The Zen of Go</a></p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/logic-coding-que/"
+      ><span>Logical Coding Questions Asked in Interviews</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="">Go Skills</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Concurrency - Go Skills</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="What is concurrency Concurrency is the ability of a system or program to have multiple tasks in progress at the same time. It is a way of designing and organizing a system to allow multiple tasks to overlap in their execution, rather than executing them sequentially one after the other.
+Concurrency is often used in the context of computer programming, where it allows multiple tasks to be performed concurrently within a single program." />
+  <meta name="author" content="Amol Gaikwad" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="theme.png" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/a/AAcHTtc3mYt4p6ySf3dBzQJpgn3kiq3L0vVAsoWjEcwYfaM=s64-c-rg-br100" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="twitter.svg" />
+  
+  <link rel="preload" as="image" href="github.svg" />
+  
+  <link rel="preload" as="image" href="linkedin.svg" />
+  
+  <link rel="preload" as="image" href="rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.114.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Concurrency" />
+<meta property="og:description" content="What is concurrency Concurrency is the ability of a system or program to have multiple tasks in progress at the same time. It is a way of designing and organizing a system to allow multiple tasks to overlap in their execution, rather than executing them sequentially one after the other.
+Concurrency is often used in the context of computer programming, where it allows multiple tasks to be performed concurrently within a single program." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/concurrency/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-10T08:48:09+05:30" />
+<meta property="article:modified_time" content="2023-06-10T08:48:09+05:30" />
+
+  
+  <meta itemprop="name" content="Concurrency">
+<meta itemprop="description" content="What is concurrency Concurrency is the ability of a system or program to have multiple tasks in progress at the same time. It is a way of designing and organizing a system to allow multiple tasks to overlap in their execution, rather than executing them sequentially one after the other.
+Concurrency is often used in the context of computer programming, where it allows multiple tasks to be performed concurrently within a single program."><meta itemprop="datePublished" content="2023-06-10T08:48:09+05:30" />
+<meta itemprop="dateModified" content="2023-06-10T08:48:09+05:30" />
+<meta itemprop="wordCount" content="1560">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Concurrency"/>
+<meta name="twitter:description" content="What is concurrency Concurrency is the ability of a system or program to have multiple tasks in progress at the same time. It is a way of designing and organizing a system to allow multiple tasks to overlap in their execution, rather than executing them sequentially one after the other.
+Concurrency is often used in the context of computer programming, where it allows multiple tasks to be performed concurrently within a single program."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href=""
+      >Go Skills</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/amolasg"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gopheramol"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/amolasg/"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Concurrency</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jun 10, 2023</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h2 id="what-is-concurrency">What is concurrency</h2>
+<p>Concurrency is the ability of a system or program to have multiple tasks in progress at the same time. It is a way of designing and organizing a system to allow multiple tasks to overlap in their execution, rather than executing them sequentially one after the other.</p>
+<p>Concurrency is often used in the context of computer programming, where it allows multiple tasks to be performed concurrently within a single program. It can be used to improve the performance and responsiveness of a program by allowing it to perform multiple tasks at the same time, rather than executing them one at a time in a sequential manner.</p>
+<p>There are several different ways to implement concurrency in a program, including:</p>
+<ul>
+<li>Multi threading: This involves dividing a program into multiple threads of execution that can run concurrently on separate cores or processors.</li>
+<li>Asynchronous programming: This involves using asynchronous functions or methods that allow a program to perform multiple tasks concurrently, without blocking the execution of the program.</li>
+<li>Event-driven programming: This involves using a programming model in which the program responds to events or triggers, allowing it to perform multiple tasks concurrently in response to different events.</li>
+</ul>
+<p>Concurrency can be useful in a variety of contexts, including improving the performance and responsiveness of programs that perform multiple tasks, or that need to interact with external systems or resources. However, it can also introduce complexity and the need for careful design and testing in order to avoid race conditions and other issues that can arise when multiple tasks are running concurrently.</p>
+<h2 id="how-concurrency-achieved-in-golang">How concurrency achieved in golang</h2>
+<p>In Go, concurrency is achieved through the use of <strong>goroutines</strong> and <strong>channels</strong>.</p>
+<p>A goroutine is a <strong>lightweight concurrent function execution</strong>.</p>
+<p>Goroutines are created using the <strong><code>go</code></strong> keyword, followed by a function call.</p>
+<p>When a goroutine is created, it is scheduled to run concurrently with the calling function.</p>
+<p><strong>Channels are a way to communicate between goroutines.</strong></p>
+<p>They are <em><strong>used to send and receive values between goroutines.</strong></em></p>
+<p>Channels can be created using the <strong><code>make</code></strong> function,</p>
+<p>and values can be sent and received using the <strong><code>&lt;-</code></strong> operator.</p>
+<p>Here is an example of how to use goroutines and channels in Go:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Create a channel of type int
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Launch a goroutine that sends the value 42 to the channel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">42</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Receive the value from the channel and print it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this example, the main function creates a channel of type <strong><code>int</code></strong> and launches a goroutine that sends the value <strong><code>42</code></strong> to the channel.</p>
+<p>The main function then receives the value from the channel and prints it.</p>
+<p>Goroutines and channels are powerful tools for building concurrent programs in Go.</p>
+<p>They allow developers to easily create and manage concurrent tasks, and communicate between them using channels.</p>
+<h2 id="goroutines">Goroutines</h2>
+<p><strong>Goroutines are <a href="https://golangbot.com/functions/">functions</a> or <a href="https://golangbot.com/methods/">methods</a> that run concurrently with other functions or methods</strong>.</p>
+<p>Go routines are lightweight concurrent threads that can be used to perform tasks concurrently in Go.</p>
+<p>Go routines are managed by the Go runtime, and can be created and scheduled using the <strong><code>go</code></strong> keyword.</p>
+<p>Here is an example of how to create and use Go routines in Go:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">printNumbers</span>(<span style="color:#a6e22e">c</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">i</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	close(<span style="color:#a6e22e">c</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">printNumbers</span>(<span style="color:#a6e22e">c</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">c</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this example, the <strong><code>printNumbers</code></strong> function is a Go routine that sends a series of numbers to a channel <strong><code>c</code></strong>. The main function creates the channel and starts the Go routine using the <strong><code>go</code></strong> keyword. The main function then iterates over the channel, printing the numbers as they are received.</p>
+<p>Go routines are useful for writing concurrent programs that can take advantage of multiple CPU cores or that need to perform multiple tasks simultaneously.</p>
+<p>They are a key feature of Go&rsquo;s concurrency model, and are used in many types of applications.</p>
+<p>Overall, Goroutines are a powerful and flexible tool for writing concurrent programs in Go.</p>
+<p>To communicate between Go routines, you can use a variety of techniques, including:</p>
+<ol>
+<li>
+<p><strong>Channels</strong>: Channels are a built-in data structure in Go that <strong>allow Go routines to send and receive values of a specific type</strong>. <em>You can use channels to synchronize Go routines</em>,</p>
+<p>pass data between them, or signal the completion of a task.</p>
+</li>
+<li>
+<p><strong>Shared variables</strong>: You can use shared variables to communicate between Go routines, but you need to use synchronization mechanisms such as mutexes to protect against race conditions.</p>
+</li>
+<li>
+<p><strong>Wait groups</strong>: Wait groups are a built-in data structure in Go that <strong>allow you to wait for a group of Go routines to finish.</strong> You can use wait groups to synchronize Go routines, or to signal the completion of a task.</p>
+</li>
+<li>
+<p><strong>Timers and Tickers</strong>: Timers and tickers are built-in data structures in Go that allow you to schedule tasks or send signals at regular intervals. You can use timers and tickers to synchronize Go routines or to trigger actions based on time.</p>
+</li>
+</ol>
+<p>Overall, there are many ways to communicate between Go routines in Go, and the appropriate method depends on the specific requirements of your application.</p>
+<h2 id="channels">Channels</h2>
+<p>In Go, a channel is a communication mechanism that allows one goroutine to send values to another goroutine.</p>
+<p>Channels are a key feature of Go&rsquo;s concurrency model, and are used to coordinate the execution of multiple goroutines.</p>
+<p>Channels have a type, which specifies the type of values that can be sent over the channel.</p>
+<p>To create a channel, you use the <strong><code>make</code></strong> function with the <strong><code>chan</code></strong> keyword, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span></code></pre></div><p>This creates a channel that can be used to send and receive <strong><code>int</code></strong> values.</p>
+<p>To send a value over a channel, you use the <strong><code>&lt;-</code></strong> operator, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span><span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>This sends the value 5 over the channel. The goroutine that sent the value will block until another goroutine is ready to receive the value.</p>
+<p>To receive a value from a channel, you use the same <strong><code>&lt;-</code></strong> operator, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">value</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>
+</span></span></code></pre></div><p>This receives a value from the channel and assigns it to the variable <strong><code>value</code></strong>.</p>
+<p>The receiving goroutine will block until a value is available to be received.</p>
+<p>Here is an example of using a channel to send values between two goroutines:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">value</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">value</span>) <span style="color:#75715e">// Output: 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h2 id="types-of-channels-and-use">Types of channels and use</h2>
+<p>In Go, a channel can be either <strong>buffered</strong> or <strong>unbuffered</strong>.</p>
+<p>A buffered channel has a fixed-size buffer that stores values that are sent over the channel.</p>
+<p>An unbuffered channel does not have a buffer, and values are sent directly from the sender to the receiver.</p>
+<p>The main difference between buffered and unbuffered channels is how they handle the communication between goroutines. With a buffered channel, a goroutine can send a value over the channel without blocking, as long as there is space in the buffer. The receiver can then receive the value at a later time, when it is ready. This allows goroutines to communicate asynchronously, without having to wait for each other.</p>
+<p>On the other hand, an unbuffered channel does not have a buffer, so the sender must wait for the receiver to be ready to receive the value before the value can be sent. This means that the communication between goroutines is synchronous, and the sender must wait for the receiver to receive the value before it can continue execution.</p>
+<p>Here is an example of using a buffered channel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">2</span>) <span style="color:#75715e">// Create a buffered channel with a capacity of 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">// Send value without blocking
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e">// Send value without blocking
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>) <span style="color:#75715e">// Receive value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>) <span style="color:#75715e">// Receive value
+</span></span></span></code></pre></div><p>In this example, the buffered channel has a capacity of 2, so the first two sends do not block.</p>
+<p>The receiver can then receive the two values at a later time.</p>
+<p>Here is an example of using an unbuffered channel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>) <span style="color:#75715e">// Create an unbuffered channel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">// Send value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>) <span style="color:#75715e">// Receive value
+</span></span></span></code></pre></div><p>In this example, the unbuffered channel does not have a buffer, so the send operation blocks until the value is received by the receiver.</p>
+<p>Whether to use a buffered or unbuffered channel depends on the needs of your program.</p>
+<p>Buffered channels can be useful for improving the performance of concurrent programs by allowing goroutines to communicate asynchronously, but they can also lead to complex behavior if not used carefully. Unbuffered channels are simpler to use, but can result in slower communication between goroutines.</p>
+<h3 id="when-to-use">When to use</h3>
+<p>Buffered channels can be useful in cases where you want to allow goroutines to communicate asynchronously, without having to wait for each other. This can be useful for improving the performance of concurrent programs, especially when the communication between goroutines is frequent or high-volume.</p>
+<p>On the other hand, unbuffered channels are simpler to use and can be easier to reason about, as they provide a more direct form of communication between goroutines. They can also be useful in cases where you want to ensure that the communication between goroutines is synchronous, or when the volume of communication is low.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/aws/"
+      ><span class="mr-1.5">←</span><span>Aws</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/interview/"
+      ><span>Golang Interview Questions</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="">Go Skills</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

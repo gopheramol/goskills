@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Most commonly asked interview theory questions. - Go Skills</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="Why golang What is goroutines What is channels Types of channels - Buffered &amp; Unbuffered channel Where you used goroutine and channels in project What is wait groups What is Mutexes / how to avoid race condition in Go-routines talking each other one is failed to send data to another how you handle What is interfaces What is methods What are the reference types in golang How to generate in go mock / go mocking?" />
+  <meta name="author" content="Amol Gaikwad" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="theme.png" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/a/AAcHTtc3mYt4p6ySf3dBzQJpgn3kiq3L0vVAsoWjEcwYfaM=s64-c-rg-br100" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="twitter.svg" />
+  
+  <link rel="preload" as="image" href="github.svg" />
+  
+  <link rel="preload" as="image" href="linkedin.svg" />
+  
+  <link rel="preload" as="image" href="rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.114.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Most commonly asked interview theory questions." />
+<meta property="og:description" content="Why golang What is goroutines What is channels Types of channels - Buffered &amp; Unbuffered channel Where you used goroutine and channels in project What is wait groups What is Mutexes / how to avoid race condition in Go-routines talking each other one is failed to send data to another how you handle What is interfaces What is methods What are the reference types in golang How to generate in go mock / go mocking?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/theory-que/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-17T21:29:31+05:30" />
+<meta property="article:modified_time" content="2023-06-17T21:29:31+05:30" />
+
+  
+  <meta itemprop="name" content="Most commonly asked interview theory questions.">
+<meta itemprop="description" content="Why golang What is goroutines What is channels Types of channels - Buffered &amp; Unbuffered channel Where you used goroutine and channels in project What is wait groups What is Mutexes / how to avoid race condition in Go-routines talking each other one is failed to send data to another how you handle What is interfaces What is methods What are the reference types in golang How to generate in go mock / go mocking?"><meta itemprop="datePublished" content="2023-06-17T21:29:31+05:30" />
+<meta itemprop="dateModified" content="2023-06-17T21:29:31+05:30" />
+<meta itemprop="wordCount" content="673">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Most commonly asked interview theory questions."/>
+<meta name="twitter:description" content="Why golang What is goroutines What is channels Types of channels - Buffered &amp; Unbuffered channel Where you used goroutine and channels in project What is wait groups What is Mutexes / how to avoid race condition in Go-routines talking each other one is failed to send data to another how you handle What is interfaces What is methods What are the reference types in golang How to generate in go mock / go mocking?"/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href=""
+      >Go Skills</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/amolasg"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gopheramol"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/amolasg/"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Most commonly asked interview theory questions.</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jun 17, 2023</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><ol>
+<li>Why golang</li>
+<li>What is goroutines</li>
+<li>What is channels</li>
+<li>Types of channels - Buffered &amp; Unbuffered channel</li>
+<li>Where you used goroutine and channels in project</li>
+<li>What is wait groups</li>
+<li>What is Mutexes / how to avoid race condition in</li>
+<li>Go-routines talking each other one is failed to send data to another how you handle</li>
+<li>What is interfaces</li>
+<li>What is methods</li>
+<li>What are the reference types in golang</li>
+<li>How to generate in go mock / go mocking?</li>
+<li>Go testing tools used ?</li>
+<li>What is difference between interface and struct</li>
+<li>runtime time type checking</li>
+<li>Unit tests / How you test server, handler, repository ?</li>
+<li>How Slices different from array , how they dynamically shrink ?</li>
+<li>Remove middle element from slice without re-slicing ?</li>
+<li>Can we add filter on slice, for example only return even no from slice ?</li>
+<li>How to create an worker pool</li>
+<li>Error handling in go / exception handling in golang</li>
+<li>What is  nil in golang</li>
+<li>What is anonymous function</li>
+<li>What is empty struct{}</li>
+<li>What is maps</li>
+<li>How to get only keys from map</li>
+<li>How to iterate over map without using for loop</li>
+<li>What is struct</li>
+<li>How to detect race condition in golang</li>
+<li>What are golang data structures used in project</li>
+<li>Have you written own pkg in golang</li>
+<li>Tools to format go code</li>
+<li>What is Function Closure</li>
+<li>How do know channel is closed?</li>
+<li>What is Shallow copy , Deep copy difference</li>
+<li>Datatypes in Go</li>
+<li>Write an API in gin framework</li>
+<li>Panic and Recovery</li>
+<li>What is go mod</li>
+<li>Serialization in go / Go is asynchronous or synchronous</li>
+<li>What is context package</li>
+<li>Add value to a map using channels</li>
+<li>Parallelism and concurrency</li>
+<li>Polymorphism and Inheritance in golang , How to achieve ?</li>
+<li>Design a rest server to store employee details</li>
+<li>Do you know Gin ?</li>
+<li>What is string literals</li>
+<li>What is Docker</li>
+<li>What is k8s</li>
+<li>Complexity of insert , search in maps and array/slice</li>
+<li>Drawbacks of micro services</li>
+<li>Write API for user register how you can do ?</li>
+<li>Micro services how to handle failed</li>
+<li>How you mange and read config at local, staging, production ?</li>
+<li>How to write response if something happen in service layer ?</li>
+<li>What happens when two go routines try to access same resource, how to avoid ?</li>
+<li>How to know if any service third party API failed ?</li>
+<li>How to copy one file from server1 to server2</li>
+<li>Rate yourself out of 10 in golang , database</li>
+<li>How you migrate existing monolithic project into micro services</li>
+<li>What are the design patterns ?</li>
+<li>Explain URL shortner service how you structure code ( Architecture folder structure)</li>
+<li>Which database will choose relational or nosql</li>
+<li>Can we design architecture for your project?</li>
+<li>Have you written own pkgs in golang ?</li>
+<li>What is docker file, docker-compose difference ?</li>
+<li>Can you able to write Docker file ?</li>
+<li>What is GRPC</li>
+<li>Can we use json or xml instread on protobuf in grpc</li>
+<li>Why not follow TDD in current project</li>
+<li>How you find error if any micro service is down , how to check logs and recover</li>
+<li>Do you know Virtualisation , pagination some OS concepts</li>
+<li>Which framework used</li>
+<li>How you migrate NoSQL to SQL DB</li>
+<li>What are the message queue you used ?</li>
+<li>Git hub actions &ndash;&gt; CICD</li>
+<li>How you document your API - Swagger, GoDOC</li>
+<li>How you secure application at code level</li>
+<li>AWS - Amazon Elastic Compute Cloud (EC2), AWS Lambda - server less, Amazon Simple Storage Service (S3), Amazon DynamoDB,</li>
+<li>What is terraform</li>
+<li>Array vs linked-list , queue vs stack , complexity</li>
+<li>What is kafka</li>
+<li>How to set env in docker</li>
+<li>What is Service discovery</li>
+<li>Which db is faster relational vs nosql</li>
+<li>Interpreter vs compiler</li>
+<li>What is heap and stack</li>
+<li>What is thread</li>
+<li>Tell me common HTTP Error codes</li>
+<li>Explain 2 tier , 3 tier Architecture</li>
+<li>Communication Client to Server end to end</li>
+<li>Micro services vs monolith</li>
+<li>What is race condition , deadlock</li>
+<li>Linux commands</li>
+<li>What is /proc in Linux</li>
+<li>What is bash ?</li>
+<li>What is script and What is program</li>
+<li>Explain your project structure / What is clean code architecture</li>
+<li>ELK Elastic search</li>
+<li>How micro services communicates?</li>
+</ol>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/logic-coding-que/"
+      ><span class="mr-1.5">←</span><span>Logical Coding Questions Asked in Interviews</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/golang-coding-que/"
+      ><span>Golang Coding Questions</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="">Go Skills</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

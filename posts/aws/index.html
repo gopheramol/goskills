@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Aws - Go Skills</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  <meta name="description" content="Amazon Web Services (AWS) offers a wide range of cloud computing services and solutions to help organizations with their infrastructure, storage, database, networking, analytics, machine learning, artificial intelligence, and more. Here are some of the key AWS services:
+Compute Services: Amazon Elastic Compute Cloud (EC2): Provides scalable virtual servers in the cloud. AWS Lambda: Runs code without provisioning or managing servers. Storage Services: Amazon Simple Storage Service (S3): Offers scalable object storage for files and data." />
+  <meta name="author" content="Amol Gaikwad" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+
+  
+     
+  <link rel="preload" as="image" href="theme.png" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/a/AAcHTtc3mYt4p6ySf3dBzQJpgn3kiq3L0vVAsoWjEcwYfaM=s64-c-rg-br100" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="twitter.svg" />
+  
+  <link rel="preload" as="image" href="github.svg" />
+  
+  <link rel="preload" as="image" href="linkedin.svg" />
+  
+  <link rel="preload" as="image" href="rss.svg" />
+  
+  
+
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.114.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Aws" />
+<meta property="og:description" content="Amazon Web Services (AWS) offers a wide range of cloud computing services and solutions to help organizations with their infrastructure, storage, database, networking, analytics, machine learning, artificial intelligence, and more. Here are some of the key AWS services:
+Compute Services: Amazon Elastic Compute Cloud (EC2): Provides scalable virtual servers in the cloud. AWS Lambda: Runs code without provisioning or managing servers. Storage Services: Amazon Simple Storage Service (S3): Offers scalable object storage for files and data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/aws/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-10T21:13:18+05:30" />
+<meta property="article:modified_time" content="2023-06-10T21:13:18+05:30" />
+
+  
+  <meta itemprop="name" content="Aws">
+<meta itemprop="description" content="Amazon Web Services (AWS) offers a wide range of cloud computing services and solutions to help organizations with their infrastructure, storage, database, networking, analytics, machine learning, artificial intelligence, and more. Here are some of the key AWS services:
+Compute Services: Amazon Elastic Compute Cloud (EC2): Provides scalable virtual servers in the cloud. AWS Lambda: Runs code without provisioning or managing servers. Storage Services: Amazon Simple Storage Service (S3): Offers scalable object storage for files and data."><meta itemprop="datePublished" content="2023-06-10T21:13:18+05:30" />
+<meta itemprop="dateModified" content="2023-06-10T21:13:18+05:30" />
+<meta itemprop="wordCount" content="306">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Aws"/>
+<meta name="twitter:description" content="Amazon Web Services (AWS) offers a wide range of cloud computing services and solutions to help organizations with their infrastructure, storage, database, networking, analytics, machine learning, artificial intelligence, and more. Here are some of the key AWS services:
+Compute Services: Amazon Elastic Compute Cloud (EC2): Provides scalable virtual servers in the cloud. AWS Lambda: Runs code without provisioning or managing servers. Storage Services: Amazon Simple Storage Service (S3): Offers scalable object storage for files and data."/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href=""
+      >Go Skills</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/amolasg"
+        target="_blank"
+        rel="me"
+      >
+        twitter
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gopheramol"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/amolasg/"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Aws</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jun 10, 2023</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>Amazon Web Services (AWS) offers a wide range of cloud computing services and solutions to help organizations with their infrastructure, storage, database, networking, analytics, machine learning, artificial intelligence, and more. Here are some of the key AWS services:</p>
+<ol>
+<li>Compute Services:
+<ul>
+<li>Amazon Elastic Compute Cloud (EC2): Provides scalable virtual servers in the cloud.</li>
+<li>AWS Lambda: Runs code without provisioning or managing servers.</li>
+</ul>
+</li>
+<li>Storage Services:
+<ul>
+<li>Amazon Simple Storage Service (S3): Offers scalable object storage for files and data.</li>
+<li>Amazon Elastic Block Store (EBS): Provides persistent block-level storage volumes for EC2 instances.</li>
+</ul>
+</li>
+<li>Database Services:
+<ul>
+<li>Amazon Relational Database Service (RDS): Manages relational databases such as MySQL, PostgreSQL, Oracle, etc.</li>
+<li>Amazon DynamoDB: Fully managed NoSQL database service.</li>
+<li>Amazon Aurora: High-performance, fully managed relational database.</li>
+</ul>
+</li>
+<li>Networking Services:
+<ul>
+<li>Amazon Virtual Private Cloud (VPC): Isolates resources in a virtual network.</li>
+<li>Amazon Route 53: Scalable domain name system (DNS) web service.</li>
+<li>AWS Direct Connect: Establishes a dedicated network connection between on-premises and AWS.</li>
+</ul>
+</li>
+<li>Analytics Services:
+<ul>
+<li>Amazon Redshift: Fast, fully managed data warehousing service.</li>
+<li>Amazon Athena: Query service for analyzing data in S3 using SQL.</li>
+<li>Amazon Kinesis: Collects, processes, and analyzes streaming data.</li>
+</ul>
+</li>
+<li>Machine Learning and AI Services:
+<ul>
+<li>Amazon SageMaker: Fully managed machine learning service.</li>
+<li>Amazon Rekognition: Image and video analysis using deep learning.</li>
+<li>Amazon Comprehend: Natural language processing for extracting insights from text.</li>
+</ul>
+</li>
+<li>Management and Governance Services:
+<ul>
+<li>AWS Identity and Access Management (IAM): Manages access to AWS services and resources.</li>
+<li>AWS CloudFormation: Automates infrastructure deployment and management.</li>
+<li>AWS Config: Tracks resource configurations and changes.</li>
+</ul>
+</li>
+<li>Developer Tools:
+<ul>
+<li>AWS CodeCommit: Hosts secure Git repositories.</li>
+<li>AWS CodePipeline: Continuous integration and delivery service.</li>
+<li>AWS CodeDeploy: Automates code deployments to EC2 instances.</li>
+</ul>
+</li>
+</ol>
+<p>These are just a few examples of the extensive range of services provided by AWS. Each service has its own specific use cases, benefits, and pricing structure, allowing organizations to choose the services that best suit their requirements.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/gotools/"
+      ><span class="mr-1.5">←</span><span>Gotools</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/concurrency/"
+      ><span>Concurrency</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="">Go Skills</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>
